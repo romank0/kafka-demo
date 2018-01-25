@@ -1,0 +1,27 @@
+# Demo project 
+
+Kafka and Spring Boot
+
+## Run Kafka
+
+1. Use https://github.com/romank0/kafka-docker.
+2. Make host accessible to docker container
+```
+ sudo ifconfig lo0 alias 123.123.123.123/24
+```
+3 Set KAFKA_ADVERTISED_HOST_NAME to that alias in `docker-compose.yml`
+4. `docker-compose up`
+5. find out post from kafka log or using `broker-list.sh`
+
+## Utils
+
+Can be run from the shell.
+
+### Start the shell
+
+`./start-kafka-shell.sh 123.123.123.123 localhost:2181`
+
+### Check the topic
+
+/opt/kafka/bin/kafka-run-class.sh kafka.tools.SimpleConsumerShell  --broker-list $HOST_IP:32784 --topic myTopic -sets --offset 5
+
